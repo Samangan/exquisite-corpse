@@ -35,11 +35,6 @@ object Application extends Controller {
   def createNewCorpse = Action (parse.json) { implicit request =>
     val newCorpseID = Corpse.create(Corpse(NotAssigned, "ex-corpse"))
 
-    
-    if(newCorpseID == -1) {
-      return BadRequest()
-    }
-
     var encodedCorpseImg= Json.fromJson [String](request.body \ "body").get
 
     encodedCorpseImg = encodedCorpseImg.substring(22, encodedCorpseImg.length) // remove data:image/png;base64,
