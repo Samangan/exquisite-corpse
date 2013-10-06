@@ -33,7 +33,7 @@ object Application extends Controller {
 
   //POST /corpse
   def createNewCorpse = Action (parse.json) { implicit request =>
-  	val newCorpseID = Corpse.create(Corpse(NotAssigned, "ex-corpse"))
+    val newCorpseID = Corpse.create(Corpse(NotAssigned, "ex-corpse"))
 
     
     if(newCorpseID == -1) {
