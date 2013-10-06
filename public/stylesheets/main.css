@@ -1,0 +1,50 @@
+body {
+    padding-top: 50px;
+    /*background-color: #73C6EA;*/
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+
+#art-container{
+	width:450px;
+	margin: 0 auto;
+	padding-top: 10px;
+	margin-top:10px;
+	padding-bottom:150px;
+}
+
+#next-view-region {
+	width:50px;
+	float:left;
+}
+
+#imageTemp {
+	margin-left: 50px;
+}
+
+#imageView {
+	margin-left: 50px;
+}
+
+#toolbar {
+	float:right;
+}
+
+#right-toolbar{
+	float:right;
+	margin-left:15px;
+}
+
+#icon{
+	zoom: 2;
+    -moz-transform: scale(2);  /* Firefox */
+}
+
+#tool{
+	margin:10px;
+}
+

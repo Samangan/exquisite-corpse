@@ -1,0 +1,5 @@
+#art-container { position: relative; width: 400px; margin-left: auto; margin-right: auto; }
+#imageView { border: 1px solid #000;  position: absolute; top: 0px; left: 0px;}
+#imageTemp { position: absolute; top: 0px; left: 0px; }
+
+

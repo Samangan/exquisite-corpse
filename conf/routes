@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Make the initial corpse
+GET     /                           controllers.Application.index
+
+
+# Corpse CRUD REST APIS:
+
+POST	/corpse 					controllers.Application.createNewCorpse
+PUT		/corpse/:id 				controllers.Application.addNewRegionToCorpse(id: Long)
+GET 	/corpse/:id 				controllers.Application.getCorpse(id: Long)
+GET 	/corpses					controllers.Application.getCorpses
+GET     /corpse/complete/:id        controllers.Application.getCompleteCorpse(id: Long)
+DELETE 	/corpse/:id 				controllers.Application.deleteCorpse(id: Long)
+
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+GET     /about						controllers.Application.about
+
+
