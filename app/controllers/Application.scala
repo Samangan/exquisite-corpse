@@ -35,9 +35,9 @@ object Application extends Controller {
   def createNewCorpse = Action (parse.json) { implicit request =>
   	val newCorpseID = Corpse.create(Corpse(NotAssigned, "ex-corpse"))
 
-    //TODO: return bad requests when needed
+    
     if(newCorpseID == -1) {
-      //return BadRequest()
+      return BadRequest()
     }
 
   	var encodedCorpseImg= Json.fromJson [String](request.body \ "body").get
@@ -56,12 +56,6 @@ object Application extends Controller {
 
   //GET /corpse/:id
   def getCorpse (id: Long) = Action { implicit request =>
-    // this api returns the current nextRegion for the inputted corpse.id
-    //  For now the nextRegion is hardcoded in this action (later it will be saved in the db (when the user makes it))
-    
-    //TODO: get corpse from database
-
-    // get s3 bucket name from database
     val bucket = S3("ex-corpse")
 
     val result = bucket get id + ".png"
@@ -99,7 +93,6 @@ object Application extends Controller {
 
   //PUT /corpse/:id
   def addNewRegionToCorpse (id: Long) = Action (parse.json) { implicit request =>
-    // get image from s3 bucket
     val bucket = S3("ex-corpse")
 
     val result = bucket get id + ".png"
@@ -120,7 +113,6 @@ object Application extends Controller {
     var resultImg: BufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
     var g: Graphics = resultImg.getGraphics()
 
-    //grab newRegion
     var newRegion = Json.fromJson [String](request.body \ "body").get
 
     newRegion = newRegion.substring(22, newRegion.length) // remove data:image/png;base64,
@@ -134,15 +126,13 @@ object Application extends Controller {
     val baos: ByteArrayOutputStream = new ByteArrayOutputStream()    
     ImageIO.write(resultImg, "png", baos)
 
-    //delete image from s3 bucket
-    //val removeResult = bucket remove  id + ".png"
     //save new image to s3 bucket
     val addResult = bucket add BucketFile( id + ".png", "image/png", baos.toByteArray , None, None)
 
     Ok(Json.toJson(id))
   }
 
-  //GET     /corpse/complete/:id        controllers.Application.getCompleteCorpse(id: Long)
+  //GET     /corpse/complete/:id 
   def getCompleteCorpse (id: Long) = Action { implicit request =>
     val bucket = S3("ex-corpse")
 
