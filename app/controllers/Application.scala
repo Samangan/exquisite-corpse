@@ -40,11 +40,11 @@ object Application extends Controller {
       return BadRequest()
     }
 
-  	var encodedCorpseImg= Json.fromJson [String](request.body \ "body").get
+    var encodedCorpseImg= Json.fromJson [String](request.body \ "body").get
 
     encodedCorpseImg = encodedCorpseImg.substring(22, encodedCorpseImg.length) // remove data:image/png;base64,
 
-  	println("Added new corpse: " + newCorpseID)
+    println("Added new corpse: " + newCorpseID)
 
     val bucket = S3("ex-corpse")
 
