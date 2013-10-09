@@ -44,8 +44,7 @@ object Application extends Controller {
     val bucket = S3("ex-corpse")
 
     val result = bucket add BucketFile( newCorpseID + ".png", "image/png", new Base64().decode(encodedCorpseImg.getBytes), None, None)
-
-    //Send the newly made corpseId so that js can put the link to GET /corpse/:id on te page for the user to send/click
+    
     Ok(Json.toJson(newCorpseID))
   }
 
