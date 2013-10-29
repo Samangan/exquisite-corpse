@@ -31,17 +31,12 @@ body {
 }
 
 #toolbar {
-	float:right;
-}
-
-#right-toolbar{
-	float:right;
-	margin-left:15px;
+	
 }
 
 #icon{
-	zoom: 2;
-    -moz-transform: scale(2);  /* Firefox */
+	zoom: 0.9;
+    -moz-transform: scale(0.9);  /* Firefox */
 }
 
 #tool{
